@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/madeindjs/markgit/issues"
   },
-  "homepage": "https://github.com/madeindjs/markgit#readme"
+  "homepage": "https://github.com/madeindjs/markgit#readme",
+  "dependencies": {
+    "simplemde": "^1.11.2"
+  }
 }

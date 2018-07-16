@@ -3,11 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <style type="text/css">
+      html, body{padding: 0px; margin: 0px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="./node_modules/simplemde/dist/simplemde.min.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <textarea id="editor"></textarea>
+
+
+    <script type="text/javascript">
+      var SimpleMDE = require('./node_modules/simplemde/dist/simplemde.min.js')
+      var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+    </script>
   </body>
 </html>
