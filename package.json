@@ -1,22 +1,26 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "markgit",
+  "version": "0.0.1",
+  "description": "Save your markdown notes as a git repository",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madeindjs/markgit.git"
+  },
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "git",
+    "markdown",
+    "electron",
+    "nodejs"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "^2.0.0"
-  }
+  "author": "Alexandre Rousseau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madeindjs/markgit/issues"
+  },
+  "homepage": "https://github.com/madeindjs/markgit#readme"
 }
