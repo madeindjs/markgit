@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/madeindjs/markgit#readme",
   "dependencies": {
+    "electron": "^2.0.5",
     "simple-git": "^1.96.0",
     "simplemde": "^1.11.2"
   }
