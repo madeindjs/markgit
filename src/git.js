@@ -5,6 +5,7 @@ const SimpleMDE = require('./node_modules/simplemde/dist/simplemde.min.js')
 
 const AUTO_SAVE_TIME = 2000
 const NOTE_PATH = '/tmp/test/'
+const NOTE_FILE = NOTE_PATH + 'touch.log'
 
 
 let oldValue = ''
@@ -34,13 +35,14 @@ const mkdirSync = function () {
 
 // write file & commit
 function save(value) {
-    fs.writeFile(NOTE_PATH + 'touch.log', value, function(err) {
+    fs.writeFile(NOTE_FILE, value, function(err) {
         if(err) {
-            return console.log(err)
+            return alert(err)
         }
 
         repository.add('./*').commit("Automatic save")
-        
+        console.log('Commit created')
+
         oldValue = value
     });
 }
@@ -58,5 +60,21 @@ function automaticSave() {
 }
 
 
-mkdirSync(NOTE_PATH)
-automaticSave()
+// setup everything
+function init() {
+    // create folder if not exist
+    mkdirSync(NOTE_PATH)
+
+    // get value from file
+    fs.readFile(NOTE_FILE, 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        simplemde.value(data)
+        // begin automatic save
+        automaticSave()
+    })
+}
+
+
+init()
