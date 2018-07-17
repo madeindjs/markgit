@@ -2,9 +2,6 @@ const fs = require('fs')
 
 module.exports = class Repository {
 
-
-
-
     constructor(path){
         this.path = path
         this.createDirectory()
