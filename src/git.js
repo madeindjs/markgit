@@ -18,6 +18,8 @@ let oldValue = ''
 // create editor
 let simplemde = new SimpleMDE({
     element: document.getElementById("editor"),
+    toolbar: false,
+    status: false,
 });
 
 // save the current mde opened & commit if necessary
