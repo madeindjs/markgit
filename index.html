@@ -19,6 +19,10 @@
     <textarea id="editor"></textarea>
 
     <div id="app">
+
+      <ul>
+        <li v-for="commit in commits">{{ commit.message }}</li>
+      </ul>
       
     </div>
     

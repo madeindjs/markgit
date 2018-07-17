@@ -13,6 +13,7 @@ module.exports = class Repository {
             .addConfig('user.email', 'some@one.com')
     }
 
+
     // write file & commit
     save(value) {
 
@@ -31,7 +32,6 @@ module.exports = class Repository {
         });
     }
 
-
     // create the given directory
     createDirectory() {
         try {
@@ -40,6 +40,5 @@ module.exports = class Repository {
             if (err.code !== 'EEXIST') throw err
         }
     }
-
 
 }

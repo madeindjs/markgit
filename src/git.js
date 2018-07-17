@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const SimpleMDE = require('./node_modules/simplemde/dist/simplemde.min.js')
 const Repository = require('./src/repository.js')
+const app = require('./src/vue.js')
 
 
 const AUTO_SAVE_TIME = 2000
@@ -9,6 +10,14 @@ const NOTE_PATH = '/tmp/test/'
 const NOTE_FILE = NOTE_PATH + 'touch.log'
 
 
+const Vue = require('./node_modules/vue/dist/vue.js')
+
+const vue = new Vue({
+  el: '#app',
+  data: {
+    commits: []
+  }
+})
 
 let repo = new Repository('/tmp/test/')
 
@@ -30,6 +39,9 @@ function automaticSave() {
         if (oldValue != newValue) {
             repo.save(newValue)
         }
+        repo.simpleGit.log([], function(err, data){
+            vue.commits = data.all
+        })
         return automaticSave()
     }, AUTO_SAVE_TIME);
 }
@@ -48,7 +60,11 @@ function init() {
         // begin automatic save
         automaticSave()
     })
+
 }
+
+
+
 
 
 init()
