@@ -12,7 +12,12 @@
   <body>
     <div id="app">
       <ul>
-        <li v-for="commit in commits"><a href="#"><div class="commit">{{ commit.hash.substring(0,8) }}</div> {{ commit.message }}</a></li>
+        <li v-for="commit in commits">
+          <a href="#" @click.prevent="checkout(commit.hash)">
+            <div class="commit">{{ commit.hash.substring(0,8) }}</div>
+            {{ commit.message }}
+          </a>
+        </li>
       </ul>
     </div>
     <textarea id="editor"></textarea>

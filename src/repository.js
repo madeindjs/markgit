@@ -14,6 +14,11 @@ module.exports = class Repository {
     }
 
 
+    checkout(hash, callback = null) {
+        this.simpleGit.checkout(hash, callback)
+    }
+
+
     // write file & commit
     save(value) {
         let simpleGit = this.simpleGit

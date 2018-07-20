@@ -9,7 +9,7 @@ body > div.CodeMirror{
 
 
 /* display commit inline */
-ul{list-style: none; padding: 0; overflow: auto;white-space: nowrap;}
+ul{list-style: none; padding: 0; overflow: auto; white-space: nowrap; overflow-x: hidden;}
 li{border-top: 1px solid transparent; display: inline-block; padding: 0.5rem; white-space: nowrap; overflow: hidden; width: 5rem;}
 li:hover{border-color: black }
 li a{color: black; text-decoration: none;}

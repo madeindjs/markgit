@@ -5,21 +5,31 @@ const Repository = require('./src/repository.js')
 const app = require('./src/vue.js')
 
 
-const AUTO_SAVE_TIME = 2000
+const AUTO_SAVE_TIME = 60000
 const NOTE_PATH = '/tmp/test/'
 const NOTE_FILE = NOTE_PATH + 'touch.log'
 
 
 const Vue = require('./node_modules/vue/dist/vue.js')
 
+let repo = new Repository('/tmp/test/')
+
+
 const vue = new Vue({
   el: '#app',
+  methods: {
+    checkout: function(hash){
+        repo.checkout(hash, () => {
+            reloadGitLog()
+            reloadFile()
+        })
+    }
+  },
   data: {
     commits: []
   }
 })
 
-let repo = new Repository('/tmp/test/')
 
 
 let oldValue = ''
@@ -38,29 +48,37 @@ function automaticSave() {
         // skip this method if value not changed
         if (oldValue != newValue) {
             repo.save(newValue)
+            reloadGitLog()
         }
-        repo.simpleGit.log([], function(err, data){
-            if(data) vue.commits = data.all
-        })
         return automaticSave()
     }, AUTO_SAVE_TIME);
 }
 
+
+function reloadFile() {
+    fs.readFile(NOTE_FILE, 'utf8', function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        simplemde.value(data)
+    })
+}
+
+function reloadGitLog() {
+    repo.simpleGit.log([], function(err, data){
+        if(data) vue.commits = data.all
+    })
+}
 
 // setup everything
 function init() {
     // create file if not exists
     fs.closeSync(fs.openSync(NOTE_FILE, 'a'));
     // get value from file
-    fs.readFile(NOTE_FILE, 'utf8', function (err, data) {
-        if (err) {
-            return console.log(err);
-        }
-        simplemde.value(data)
-        // begin automatic save
-        automaticSave()
-    })
-
+    reloadFile()
+    reloadGitLog()
+    // begin automatic save
+    automaticSave()
 }
 
 
