@@ -4,27 +4,19 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <style type="text/css">
-      html, body{padding: 0px; margin: 0px;}
-      html{height: 100vh}
-      body{height: 100vh}
-      body > div.CodeMirror{
-        border: none;
-        margin-top: 0px; margin-bottom: 0px;
-        padding-top: 0px; padding-bottom: 0px;
-      }
+      
     </style>
     <link rel="stylesheet" type="text/css" href="./node_modules/simplemde/dist/simplemde.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
   </head>
   <body>
+    <div id="app">
+      <ul>
+        <li v-for="commit in commits"><a href="#"><div class="commit">{{ commit.hash.substring(0,8) }}</div> {{ commit.message }}</a></li>
+      </ul>
+    </div>
     <textarea id="editor"></textarea>
 
-    <div id="app">
-
-      <ul>
-        <li v-for="commit in commits">{{ commit.message }}</li>
-      </ul>
-      
-    </div>
     
 
     <script type="text/javascript" src="src/git.js"></script>

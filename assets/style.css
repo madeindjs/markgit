@@ -1,0 +1,16 @@
+/* minimalist markdown editor */
+html, body{padding: 0px; margin: 0px;height: 100%; overflow-y: hidden;}
+body > div.CodeMirror{
+  border: none;
+  margin-top: 0px; margin-bottom: 0px;
+  padding-top: 0px; padding-bottom: 0px;
+}
+
+
+
+/* display commit inline */
+ul{list-style: none; padding: 0; overflow: auto;white-space: nowrap;}
+li{border-top: 1px solid transparent; display: inline-block; padding: 0.5rem; white-space: nowrap; overflow: hidden; width: 5rem;}
+li:hover{border-color: black }
+li a{color: black; text-decoration: none;}
+div.commit{font-size: small; font-weight: bold;}

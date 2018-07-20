@@ -40,7 +40,7 @@ function automaticSave() {
             repo.save(newValue)
         }
         repo.simpleGit.log([], function(err, data){
-            vue.commits = data.all
+            if(data) vue.commits = data.all
         })
         return automaticSave()
     }, AUTO_SAVE_TIME);

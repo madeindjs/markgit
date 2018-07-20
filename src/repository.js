@@ -16,7 +16,6 @@ module.exports = class Repository {
 
     // write file & commit
     save(value) {
-
         let simpleGit = this.simpleGit
 
         fs.writeFile(NOTE_FILE, value, function(err) {
